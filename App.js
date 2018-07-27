@@ -26,7 +26,7 @@ export default class App extends React.Component {
     }) });
   }
 
-  hideItem(key) {
+  delItem(key) {
     let index = this.state.items.findIndex(x => x.key === key);
     this.setState({ items: this.state.items.filter((_, i) => i !== index) });
   }
@@ -40,7 +40,7 @@ export default class App extends React.Component {
           <Button style={{ flex: 0 }} title="Add" onPress={this.addItem.bind(this)} />
         </View>
         <FlatList style={styles.list} data={this.state.items} renderItem={({item}) =>
-          <ListItem item={item} hideElement={this.hideItem.bind(this)} />
+          <ListItem item={item} hideElement={this.delItem.bind(this)} />
         } ItemSeparatorComponent={({highlighted}) => <View style={{ height: 1, backgroundColor: "#CED0CE" }} />} />
       </View>
     );
