@@ -27,8 +27,13 @@ export default class App extends React.Component {
   }
 
   delItem(key) {
-    let index = this.state.items.findIndex(x => x.key === key);
-    this.setState({ items: this.state.items.filter((_, i) => i !== index) });
+    Alert.alert('Kérdés', 'Biztos hogy törölni akarod?', [
+      {text: 'Nem', style: 'cancel'},
+      {text: 'Igen', onPress: () => {
+        let index = this.state.items.findIndex(x => x.key === key);
+        this.setState({ items: this.state.items.filter((_, i) => i !== index) });    
+      }}
+    ]);
   }
 
   render() {
